@@ -1,0 +1,145 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  background-color: #222;
+}
+
+section {
+  max-width: 100%;
+  width: 32rem;
+  line-height: 1.8;
+  margin: 2rem;
+  box-sizing: border-box;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: .5rem;
+  box-shadow: .1rem .6rem 2rem rgba(0,0,0,.2);
+  flex-grow: 2;
+}
+
+section h2 {
+  margin: 0 0;
+  padding: 0;
+}
+
+.now {
+  text-align: center;
+  width: 20rem;
+  flex-grow: 0;
+}
+
+.now header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.now .temp {
+  font-size: 6rem;
+  line-height: .8;
+  margin: 1.2rem 0;
+}
+
+.now .feels {
+  opacity: .6;
+}
+
+.desc {
+  font-size: 2rem;
+  font-variant: all-petite-caps;
+}
+
+.today h2 {
+  text-align: center;
+}
+
+.today .hi-lo {
+  text-align: center;
+  font-size: 3rem;
+  margin: 0 auto
+}
+
+.today .hi-lo * {
+  vertical-align: middle;
+}
+
+.today .hi {
+  color: #e96e50;
+}
+
+.today .lo {
+  color: #777;
+}
+
+.today .hourly {
+  font-size: .6rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 480px;
+}
+
+.today .hourly li {
+  width: 40px;
+  list-style: none;
+  text-align: center;
+  border: 1px solid #777;
+  margin: -1px 0 0 -1px;
+  box-sizing: border-box;
+}
+
+.today .hourly .icon img{
+  width: 32px;
+  height: auto;
+}
+
+.nobreak {
+  white-space: nowrap;
+}
+
+.daily ul {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+}
+
+.daily li {
+  list-style: none;
+  border-radius: .2rem;
+  box-shadow: 0px 2px 2px rgba(0,0,0,.2);
+  margin: 0 0 .6rem;
+  padding: 0;
+  display: flex;
+}
+
+.daily .date {
+  padding: 0 1rem;
+  margin: 1px 1rem 1px 1px;
+  background-color: #e96e50;
+  color: #fff;
+  border-radius: .18rem 0 0 .18rem;
+}
+
+.daily .date .weekday {
+  font-size: 2rem;
+}
+
+.daily .icon img {
+  max-height: 80px;
+  vertical-align: top;
+}
+
+.daily .temp {
+  font-size: 2rem;
+  margin-right: 2rem;
+}
+
+.daily .desc {
+  font-size: 1.2rem;
+  color: #555;
+}
