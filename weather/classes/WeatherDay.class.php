@@ -10,7 +10,7 @@ require_once('Icon.class.php');
 require_once('Temperature.class.php');
 
 class WeatherDay {
-  const HTML_TEMPLATE = '<li style="background-image: linear-gradient(to top, #90c7e8 0%%, #90c7e8 %s%, white %s%, white 100%%)">
+  const HTML_TEMPLATE = '<li style="background-image: linear-gradient(to top, #90c7e8 0%%, #90c7e8 %s, white %s, white 100%%)">
           <div class="date">
             <div class="weekday">
               %s
@@ -41,7 +41,7 @@ class WeatherDay {
 
   public static function render($day) {
     $rain = (!empty($day->rain)) ? $day->rain : 0;
-    $rain_clamp = $rain / 50 * 100;
+    $rain_clamp = $rain / 50 * 100 . '%';
     $timestamp = $day->dt + self::$tz_offset;
 
     $params = array(
