@@ -28,7 +28,15 @@ class WeatherToday {
     </ul>
   </section>';
 
-
+  /**
+   * Renders the output.
+   * 
+   * @param  object  $data
+   * Data from the Open Weather Map API response.
+   * 
+   * @return string
+   * HTML output.
+   */
   public static function render($data) {
     WeatherHour::$tz_offset = $data->timezone_offset;
     $params = array(

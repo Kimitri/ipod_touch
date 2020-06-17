@@ -18,6 +18,15 @@ class WeatherDaily {
     </ul>
   </section>';
 
+  /**
+   * Renders the output.
+   * 
+   * @param  object  $data
+   * Data returned by the Open Weather Map API.
+   * 
+   * @return string
+   * HTML output.
+   */
   public static function render($data) {
     WeatherDay::$tz_offset = $data->timezone_offset;
     $params = array(

@@ -28,7 +28,6 @@ class WeatherDay {
           </div>
         </li>';
 
-  public static $tz_offset = 0;
   protected static $localized_days = array(
     'su',
     'ma',
@@ -38,7 +37,18 @@ class WeatherDay {
     'pe',
     'la'
   );
+  public static $tz_offset = 0;
+  
 
+  /**
+   * Renders the output.
+   * 
+   * @param  object  $day
+   * Single day data fragment from the Open Weather Map API response.
+   * 
+   * @return string
+   * HTML output.
+   */
   public static function render($day) {
     $rain = (!empty($day->rain)) ? $day->rain : 0;
     $rain_clamp = $rain / 50 * 100 . '%';

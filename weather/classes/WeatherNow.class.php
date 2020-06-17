@@ -29,6 +29,15 @@ class WeatherNow {
     </div>
   </section>';
 
+  /**
+   * Renders the output.
+   * 
+   * @param  object  $data
+   * Data from the Open Weather Map API response.
+   * 
+   * @return string
+   * HTML output.
+   */
   public static function render($data) {
     $timestamp = $data->current->dt + $data->timezone_offset;
     $params = array(

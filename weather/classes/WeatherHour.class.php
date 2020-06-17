@@ -15,6 +15,15 @@ class WeatherHour {
 
   public static $tz_offset = 0;
 
+  /**
+   * Renders the output.
+   * 
+   * @param  object  $hour
+   * Single hour data fragment from the Open Weather Map API response.
+   * 
+   * @return string
+   * HTML output.
+   */
   public static function render($hour) {
     $prop = '1h';
     $rain = (!empty($hour->rain)) ? $hour->rain->{$prop} : 0;
