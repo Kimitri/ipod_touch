@@ -4,16 +4,22 @@ require_once('classes/WeatherNow.class.php');
 require_once('classes/WeatherToday.class.php');
 require_once('classes/WeatherDaily.class.php');
 
-$css = array_map(function($url) {
-    return sprintf('<%s>; rel=stylesheet', $url);
-  }, 
-  array(
-    'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;&display=swap',
-    'css/styles.css'
-  ));
+
+$css_sources = array(
+  'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;&display=swap',
+  'css/styles.css'
+);
+
+$preload = array_map(function($url) {
+    return sprintf('<%s>; rel=preload', $url);
+  },
+  $css_sources
+);
 
 header('Content-Type: text/html; charset=utf-8');
-header('Link: ' . implode(', ', $css));
+header('Link: ' . implode(', ', $preload));
+ob_flush();
+
 $data = OpenWeatherMap::load();
 ?><!DOCTYPE html>
 <html>
@@ -27,5 +33,16 @@ $data = OpenWeatherMap::load();
   <?php echo WeatherNow::render($data); ?>
   <?php echo WeatherToday::render($data); ?>
   <?php echo WeatherDaily::render($data); ?>
+  
+  <script type="text/javascript">
+    const css_sources = <?php echo json_encode($css_sources); ?>;
+    const head = document.querySelectorAll('head')[0];
+    css_sources.forEach(src => {
+      const link = document.createElement('link');
+      link.setAttribute('href', src);
+      link.setAttribute('rel', 'stylesheet');
+      head.appendChild(link);
+    });
+  </script>
 </body>
 </html>
