@@ -7,7 +7,7 @@
  */
 
 class Icon {
-  const HTML_TEMPLATE = '<img src="http://openweathermap.org/img/wn/%s@2x.png" />';
+  const HTML_TEMPLATE = '<img src="icons/%s@2x.png" />';
 
   /**
    * Renders the output.
