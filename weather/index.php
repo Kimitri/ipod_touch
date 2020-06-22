@@ -30,6 +30,10 @@ header('Link: ' . implode(', ', $preload));
   <?php endforeach; ?>
 </head>
 <body>
+  <section id="loading">
+    <h2>Ladataan...</h2>
+    <span></span>
+  </section>
   <?php
     flush();
     ob_flush();
@@ -40,5 +44,10 @@ header('Link: ' . implode(', ', $preload));
     echo WeatherToday::render($data);
     echo WeatherDaily::render($data);
   ?>
+  <style type="text/css" media="screen">
+    #loading {
+      display: none;
+    }
+  </style>
 </body>
 </html>
