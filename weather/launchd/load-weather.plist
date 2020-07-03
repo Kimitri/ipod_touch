@@ -12,5 +12,7 @@
     <string>daemon</string>
     <key>StartInterval</key>
     <integer>3600</integer>
+    <key>RunAtLoad</key>
+    <true/>
 </dict>
 </plist>
