@@ -8,6 +8,8 @@
     <array>
         <string>/var/www/weather/scripts/load-weather.php</string>
     </array>
+    <key>UserName</key>
+    <string>daemon</string>
     <key>StartInterval</key>
     <integer>3600</integer>
 </dict>
