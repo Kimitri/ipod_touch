@@ -4,15 +4,11 @@
 <dict>
     <key>Label</key>
     <string>fi.karhuhelsinki.load-weather</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/var/www/weather/scripts/load-weather.php</string>
-    </array>
+    <key>Program</key>
+    <string>/var/www/weather/scripts/load-weather.php</string>
     <key>UserName</key>
     <string>daemon</string>
     <key>StartInterval</key>
     <integer>3600</integer>
-    <key>RunAtLoad</key>
-    <true/>
 </dict>
 </plist>
