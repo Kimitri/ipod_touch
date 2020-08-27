@@ -1,12 +1,32 @@
 <?php
-
+/**
+ * @file
+ * Image chunk displaying a three day weather forecast.
+ *
+ * @author Kimmo Tapala <kimitri@gmail.com>
+ */
 class ForecastImageChunk implements ImageChunkInterface {
   protected $context;
-
+  
+  /**
+   * Constructor.
+   * 
+   * @param ImageContext $context
+   * Image context.
+   */
   public function __construct(ImageContext $context) {
     $this->context = $context;
   }
 
+  /**
+   * Renders the chunk at a specified position in the image.
+   * 
+   * @param  int    $x
+   * X coordinate of the chunk position.
+   * 
+   * @param  int    $y
+   * Y coordinate of the chunk position.
+   */
   public function renderAt($x, $y) {
     $image = $this->context->image();
     $data = $this->context->data();
