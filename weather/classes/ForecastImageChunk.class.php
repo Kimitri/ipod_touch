@@ -50,6 +50,33 @@ class ForecastImageChunk implements ImageChunkInterface {
     }
   }
 
+  /**
+   * Renders text horizontally centered in a specified region.
+   * 
+   * @param  int    $target_width
+   * Region width.
+   * 
+   * @param  int    $text_size
+   * Text size.
+   * 
+   * @param  float  $angle
+   * Text angle.
+   * 
+   * @param  int    $offset_x
+   * Region offset X coordinate.
+   * 
+   * @param  int    $offset_y
+   * Region offset Y coordinate.
+   * 
+   * @param  color  $color
+   * Text GD color.
+   * 
+   * @param  string $font
+   * Font file.
+   * 
+   * @param  string $text
+   * Text to render.
+   */
   protected function centerText($target_width, $text_size, $angle, $offset_x, $offset_y, $color, $font, $text) {
     $image = $this->context->image();
     $bbox = imagettfbbox($text_size, $angle, $font, $text);
