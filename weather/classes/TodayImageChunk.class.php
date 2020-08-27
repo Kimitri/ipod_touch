@@ -20,10 +20,11 @@ class TodayImageChunk implements ImageChunkInterface {
   public function __construct(ImageContext $context) {
     $this->context = $context;
     $data = $this->context->data();
-    $icon_file = ImageContext::ICON_PATH . '/' . $data->daily[0]->weather[0]->icon . '@2x.png';
+    $day = $data->daily[0];
+    $icon_file = ImageContext::ICON_PATH . '/' . $day->weather[0]->icon . '@2x.png';
     $this->icon = imagecreatefrompng($icon_file);
-    $this->temp = number_format($data->daily[0]->temp->min, 0) . '...' . number_format($data->daily[0]->temp->max, 0);
-    $this->desc = strtoupper($data->daily[0]->weather[0]->description);
+    $this->temp = number_format($day->temp->min, 0) . '...' . number_format($day->temp->max, 0);
+    $this->desc = strtoupper($day->weather[0]->description);
   }
 
   /**
