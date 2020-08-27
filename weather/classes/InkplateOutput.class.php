@@ -24,7 +24,7 @@ class InkplateOutput {
       $context
         ->addImageChunk('CurrentImageChunk', 50, 40)
         ->addImageChunk('TodayImageChunk', 460, 70)
-        ->addImageChunk('ForecastImageChunk', 50, 320);
+        ->addImageChunk('ForecastImageChunk', 40, 320);
 
       $image = $context->image();
 
