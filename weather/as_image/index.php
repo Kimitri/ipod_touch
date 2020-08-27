@@ -7,4 +7,4 @@ require('../classes/CurrentImageChunk.class.php');
 require('../classes/TodayImageChunk.class.php');
 require('../classes/ForecastImageChunk.class.php');
 
-InkplateOutput::out(OpenWeatherMap::load());
+InkplateOutput::out(OpenWeatherMap::load('en'));

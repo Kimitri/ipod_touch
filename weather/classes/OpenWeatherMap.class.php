@@ -9,7 +9,6 @@ class OpenWeatherMap {
   const API_KEY_PATH = '/var/www_storage/openweathermap_api_key.txt';
   const API_URL_STR = 'https://api.openweathermap.org/data/2.5/onecall?lat=%F&lon=%F&exclude=%s&units=%s&lang=%s&appid=%s';
   const API_UNITS = 'metric';
-  const API_LANG = 'en';
 
   const COORDINATE_PATH = '/var/www_storage/home_coordinates.txt';
 
@@ -23,13 +22,16 @@ class OpenWeatherMap {
   /**
    * Loads weather data.
    *
+   * @param  string $lang
+   * Language code for the API call.
+   * 
    * @return object
    * Deserialized weather data.
    */
-  public static function load() {
+  public static function load($lang = 'fi') {
     $api_key = trim(file_get_contents(self::API_KEY_PATH));
     $location = explode(',', trim(file_get_contents(self::COORDINATE_PATH)));
-    $url = sprintf(self::API_URL_STR, $location[0], $location[1], implode(',', self::$exclude), self::API_UNITS, self::API_LANG, $api_key);
+    $url = sprintf(self::API_URL_STR, $location[0], $location[1], implode(',', self::$exclude), self::API_UNITS, $lang, $api_key);
 
     $contents = self::readFromCache($url);
 
