@@ -9,6 +9,6 @@
     <key>UserName</key>
     <string>daemon</string>
     <key>StartInterval</key>
-    <integer>3600</integer>
+    <integer>900</integer>
 </dict>
 </plist>

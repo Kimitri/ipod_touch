@@ -9,12 +9,12 @@ class OpenWeatherMap {
   const API_KEY_PATH = '/var/www_storage/openweathermap_api_key.txt';
   const API_URL_STR = 'https://api.openweathermap.org/data/2.5/onecall?lat=%F&lon=%F&exclude=%s&units=%s&lang=%s&appid=%s';
   const API_UNITS = 'metric';
-  const API_LANG = 'fi';
+  const API_LANG = 'en';
 
   const COORDINATE_PATH = '/var/www_storage/home_coordinates.txt';
 
   const CACHE_PATH = '/var/www/cache/weather';
-  const CACHE_TTL = 3600;
+  const CACHE_TTL = 900;
 
   protected static $exclude = array(
     'minutely'
