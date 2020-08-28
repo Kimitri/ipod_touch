@@ -22,8 +22,8 @@ class InkplateOutput {
     if (!file_exists($bmp_location) || filemtime($bmp_location) < time() - self::CACHE_TTL) {
       $context = new ImageContext($data);
       $context
-        ->addImageChunk('CurrentImageChunk', 50, 40)
-        ->addImageChunk('TodayImageChunk', 460, 70)
+        ->addImageChunk('CurrentImageChunk', 70, 40)
+        ->addImageChunk('TodayImageChunk', 460, 90)
         ->addImageChunk('ForecastImageChunk', 40, 320);
 
       $image = $context->image();
