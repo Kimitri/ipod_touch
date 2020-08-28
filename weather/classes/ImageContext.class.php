@@ -6,10 +6,10 @@
  * @author Kimmo Tapala <kimitri@gmail.com>
  */
 class ImageContext {
-  const ICON_PATH = '../icons_gray';
+  const ICON_PATH = '/var/www/weather/icons_gray';
 
-  const FONT_BOLD = '../fonts/Lato-Bold.ttf';
-  const FONT_REGULAR = '../fonts/Lato-Regular.ttf';
+  const FONT_BOLD = '/var/www/weather/fonts/Lato-Bold.ttf';
+  const FONT_REGULAR = '/var/www/weather/fonts/Lato-Regular.ttf';
 
   const IMAGE_WIDTH = 796;
   const IMAGE_HEIGHT = 598;
