@@ -1,1 +1,2 @@
 weather/deploy.sh
+weather/clear_cache.sh
