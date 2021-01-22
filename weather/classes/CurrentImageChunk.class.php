@@ -42,6 +42,6 @@ class CurrentImageChunk implements ImageChunkInterface {
     
     imagecopy($image, $this->icon, $x, $y, 0, 0, 100, 100);
     imagettftext($image, 40, 0, $x + 120, $y + 70, $black, ImageContext::FONT_REGULAR, $this->temp);
-    imagettftext($image, 20, 0, $x + 20, $x + 130, $black, ImageContext::FONT_REGULAR, $this->desc);
+    imagettftext($image, 20, 0, $x + 20, $y + 160, $black, ImageContext::FONT_REGULAR, $this->desc);
   }
 }
