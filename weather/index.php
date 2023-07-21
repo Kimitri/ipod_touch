@@ -42,7 +42,6 @@ header('Link: ' . implode(', ', $preload));
   </section>
   <?php
     flush();
-    ob_flush();
 
     $data = OpenWeatherMap::load();
 

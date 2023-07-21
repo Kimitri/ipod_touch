@@ -6,10 +6,10 @@
  * @author Kimmo Tapala <kimitri@gmail.com>
  */
 class ImageContext {
-  const ICON_PATH = '/var/www/weather/icons_gray';
+  const ICON_PATH = '/var/www/html/weather/icons_gray';
 
-  const FONT_BOLD = '/var/www/weather/fonts/Lato-Bold.ttf';
-  const FONT_REGULAR = '/var/www/weather/fonts/Lato-Regular.ttf';
+  const FONT_BOLD = '/var/www/html/weather/fonts/Lato-Bold.ttf';
+  const FONT_REGULAR = '/var/www/html/weather/fonts/Lato-Regular.ttf';
 
   const IMAGE_WIDTH = 796;
   const IMAGE_HEIGHT = 598;
@@ -26,10 +26,10 @@ class ImageContext {
    */
   public function __construct(stdClass $data) {
     $this->data = $data;
-    $this->image = imagecreatetruecolor(self::IMAGE_WIDTH, self::IMAGE_HEIGHT);
-    $this->colors['white'] = imagecolorallocate($this->image, 255, 255, 255);
-    $this->colors['black'] = imagecolorallocate($this->image, 0, 0, 0);
-    imagefill($this->image, 0, 0, $this->colors['white']);
+    $this->image = new Imagick();
+    $this->image->newImage(self::IMAGE_WIDTH, self::IMAGE_HEIGHT, 'white');
+    $this->colors['white'] = new ImagickPixel('white');
+    $this->colors['black'] = new ImagickPixel('black');
   }
 
   /**

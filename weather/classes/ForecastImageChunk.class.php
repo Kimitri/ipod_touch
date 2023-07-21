@@ -41,10 +41,13 @@ class ForecastImageChunk implements ImageChunkInterface {
       $x_pos = $x + $index * $width;
       $timestamp = $day->dt + $data->timezone_offset;
       $icon_file = ImageContext::ICON_PATH . '/' . $day->weather[0]->icon . '@2x.png';
-      $icon_image = imagecreatefrompng($icon_file);
+      $icon_image = new Imagick();
+      $icon_image->readImage($icon_file);
+      $icon_image->scaleImage(100, 100);
       
       $this->centerText($width, 20, 0, $x_pos, $y, $black, $font, date('D', $timestamp));
-      imagecopy($image, $icon_image, $x_pos + 67, $y + 30, 0, 0, 100, 100);
+      $this->centerText($width, 20, 0, $x_pos, $y, $black, $font, date('D', $timestamp));
+      $image->compositeImage($icon_image, Imagick::COMPOSITE_DEFAULT, $x_pos + 67, $y + 30);
       $this->centerText($width, 20, 0, $x_pos, $y + 160, $black, $font, number_format($day->temp->day, 0));
       $this->centerText($width, 12, 0, $x_pos, $y + 200, $black, $font, strtoupper($day->weather[0]->description));
     }
@@ -79,10 +82,15 @@ class ForecastImageChunk implements ImageChunkInterface {
    */
   protected function centerText($target_width, $text_size, $angle, $offset_x, $offset_y, $color, $font, $text) {
     $image = $this->context->image();
-    $bbox = imagettfbbox($text_size, $angle, $font, $text);
-    $text_width = $bbox[2] - $bbox[0];
+    $draw = new ImagickDraw();
+    $draw->setFont($font);
+    $draw->setFontSize($text_size);
+    $draw->setFillColor($color);
+
+    $metrics = $image->queryFontMetrics($draw, $text);
+    $text_width = $metrics['textWidth'];
     $text_x = round($offset_x + ($target_width - $text_width) / 2);
 
-    imagettftext($image, $text_size, $angle, $text_x, $offset_y, $color, $font, $text);
+    $image->annotateImage($draw, $text_x, $offset_y, $angle, $text);
   }
 }

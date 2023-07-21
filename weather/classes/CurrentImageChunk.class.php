@@ -20,8 +20,10 @@ class CurrentImageChunk implements ImageChunkInterface {
   public function __construct(ImageContext $context) {
     $this->context = $context;
     $data = $this->context->data();
-    $icon_file = ImageContext::ICON_PATH . '/' . $data->current->weather[0]->icon . '@2x.png';
-    $this->icon = imagecreatefrompng($icon_file);
+    $icon_file = fopen(ImageContext::ICON_PATH . '/' . $data->current->weather[0]->icon . '@2x.png', 'r');
+    $this->icon = new Imagick();
+    $this->icon->readImageFile($icon_file);
+    $this->icon->scaleImage(100, 100);
     $this->temp = number_format($data->current->temp, 0);
     $this->desc = strtoupper($data->current->weather[0]->description);
   }
@@ -40,8 +42,17 @@ class CurrentImageChunk implements ImageChunkInterface {
     $colors = $this->context->colors();
     $black = $colors['black'];
     
-    imagecopy($image, $this->icon, $x, $y, 0, 0, 100, 100);
-    imagettftext($image, 40, 0, $x + 120, $y + 70, $black, ImageContext::FONT_REGULAR, $this->temp);
-    imagettftext($image, 20, 0, $x + 20, $y + 160, $black, ImageContext::FONT_REGULAR, $this->desc);
+    $draw = new ImagickDraw();
+    $draw->setFont(ImageContext::FONT_REGULAR);
+    $draw->setFontSize(40);
+    $draw->setFillColor($black);
+    
+    $draw->annotation($x + 120, $y + 70, $this->temp);
+
+    $draw->setFontSize(20);
+    $draw->annotation($x + 20, $y + 160, $this->desc);
+
+    $image->drawImage($draw);
+    $image->compositeImage($this->icon, Imagick::COMPOSITE_DEFAULT, $x, $y);
   }
 }

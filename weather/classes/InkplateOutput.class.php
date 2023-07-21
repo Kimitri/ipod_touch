@@ -7,8 +7,8 @@
  */
 class InkplateOutput {
   const CACHE_TTL = 900;
-  const IMAGE_PNG = '/var/www/cache/weather/image.png';
-  const IMAGE_BMP = '/var/www/cache/weather/image.bmp';
+  const IMAGE_PNG = '/var/www_storage/cache/weather/image.png';
+  const IMAGE_BMP = '/var/www_storage/cache/weather/image.bmp';
 
   /**
    * Renders and outputs the BMP binary.
@@ -40,9 +40,8 @@ class InkplateOutput {
       ->addImageChunk('ForecastImageChunk', 40, 320);
 
     $image = $context->image();
-
-    imagepng($image, self::IMAGE_PNG);
-    imagedestroy($image);
+    $image->setImageFormat('png');
+    $image->writeImage(self::IMAGE_PNG);
 
     self::convertImage(self::IMAGE_PNG, self::IMAGE_BMP);
   }

@@ -6,13 +6,10 @@
  * @author Kimmo Tapala <kimitri@gmail.com>
  */
 class OpenWeatherMap {
-  const API_KEY_PATH = '/var/www_storage/openweathermap_api_key.txt';
   const API_URL_STR = 'https://api.openweathermap.org/data/2.5/onecall?lat=%F&lon=%F&exclude=%s&units=%s&lang=%s&appid=%s';
   const API_UNITS = 'metric';
 
-  const COORDINATE_PATH = '/var/www_storage/home_coordinates.txt';
-
-  const CACHE_PATH = '/var/www/cache/weather';
+  const CACHE_PATH = '/var/www_storage/cache/weather';
   const CACHE_TTL = 900;
 
   protected static $exclude = array(
@@ -29,8 +26,8 @@ class OpenWeatherMap {
    * Deserialized weather data.
    */
   public static function load($lang = 'fi') {
-    $api_key = trim(file_get_contents(self::API_KEY_PATH));
-    $location = explode(',', trim(file_get_contents(self::COORDINATE_PATH)));
+    $api_key = getenv('OPENWEATHERMAP_API_KEY');
+    $location = explode(',', getenv('HOME_COORDINATES'));
     $url = sprintf(self::API_URL_STR, $location[0], $location[1], implode(',', self::$exclude), self::API_UNITS, $lang, $api_key);
 
     $contents = self::readFromCache($url);
