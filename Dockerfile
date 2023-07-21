@@ -1,5 +1,6 @@
 FROM php:8.2-apache
 COPY ./weather/ /var/www/html/weather/
+COPY ./index.html /var/www/html/index.html
 
 RUN apt-get update; \
     apt-get install -y libmagickwand-dev; \
