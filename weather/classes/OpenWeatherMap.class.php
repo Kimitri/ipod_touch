@@ -6,7 +6,7 @@
  * @author Kimmo Tapala <kimitri@gmail.com>
  */
 class OpenWeatherMap {
-  const API_URL_STR = 'https://api.openweathermap.org/data/2.5/onecall?lat=%F&lon=%F&exclude=%s&units=%s&lang=%s&appid=%s';
+  const API_URL_STR = 'https://api.openweathermap.org/data/3.0/onecall?lat=%F&lon=%F&exclude=%s&units=%s&lang=%s&appid=%s';
   const API_UNITS = 'metric';
 
   const CACHE_PATH = '/var/www_storage/cache/weather';
